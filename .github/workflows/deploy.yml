@@ -1,4 +1,4 @@
-name: Apply changes by @${{ github.event.head_commit.author.name }}
+name: Apply changes
 
 on:
   workflow_dispatch:
