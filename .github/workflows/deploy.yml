@@ -33,4 +33,4 @@ jobs:
           rsync -av -e "ssh -o ProxyCommand=\"cloudflared access ssh --hostname ssh.isdadev.at\"" ./ deploy@ssh.isdadev.at:/opt/dropout-phreaks-discord-bot
           ssh -o StrictHostKeyChecking=no -o \
           ProxyCommand="cloudflared access ssh --hostname ssh.isdadev.at"  \
-          deploy@ssh.isdadev.at "systemctl restart dp-bot-discord"
+          deploy@ssh.isdadev.at "sudo /bin/systemctl restart dp-bot-discord"
