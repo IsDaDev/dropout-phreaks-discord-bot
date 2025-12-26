@@ -4,7 +4,7 @@ import embed
 from discord.ext import commands
 from os import environ
 
-TOKEN = environ['token']
+TOKEN = environ['TOKEN']
 
 intents = discord.Intents.default()
 intents.message_content = True

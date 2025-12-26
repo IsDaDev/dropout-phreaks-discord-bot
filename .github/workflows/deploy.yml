@@ -1,0 +1,41 @@
+name: Apply changes to bot by @${{ github.actor }}
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '21'
+
+      - name: Install cloudflared
+        run: |
+          CLOUDFLARED_VERSION=2025.10.0
+          curl -L "https://github.com/cloudflare/cloudflared/releases/download/${CLOUDFLARED_VERSION}/cloudflared-linux-amd64" -o /usr/local/bin/cloudflared
+          chmod +x /usr/local/bin/cloudflared
+          cloudflared --version
+          sudo apt install openssh-client
+
+      - name: Write SSH keys
+        run: |
+          install -m 600 -D /dev/null ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+          ssh -o StrictHostKeyChecking=no -o ProxyCommand="cloudflared access ssh --hostname ssh.isdadev.at" deploy@ssh.isdadev.at "whoami"
+
+      - name: Deploy to server
+        run: |
+          rsync -av -e "ssh -o ProxyCommand=\"cloudflared access ssh --hostname ssh.isdadev.at\"" ./ deploy@ssh.isdadev.at:/opt/dropout-phreaks-discord-bot
+          ssh -o StrictHostKeyChecking=no -o \
+          ProxyCommand="cloudflared access ssh --hostname ssh.isdadev.at"  \
+          deploy@ssh.isdadev.at
