@@ -37,8 +37,7 @@ def hdigsembed():
         value=(
             "Practice on CTF platforms like:\n"
             "• Hack The Box\n"
-            "• TryHackMe\n"
-            "More resources are listed in the `/resources` command."
+            "• TryHackMe"
         ),
         inline=False
     )

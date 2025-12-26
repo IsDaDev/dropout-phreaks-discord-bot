@@ -2,8 +2,9 @@ import discord
 import time
 import embed
 from discord.ext import commands
+from os import environ
 
-TOKEN = "[REDACTED]"
+TOKEN = environ['token']
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -13,8 +14,6 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 # Simple cooldown storage for slash command
 cooldowns = {}
 COOLDOWN_SECONDS = 5
-
-TESTSERVER = 1453396053939327148
 
 async def sendEmbed(embedTemplate, interaction: discord.Interaction):
     user_id = interaction.user.id
@@ -35,8 +34,6 @@ async def sendEmbed(embedTemplate, interaction: discord.Interaction):
 
 @bot.event
 async def on_ready():
-    guild = discord.Object(id=TESTSERVER)
-    await bot.tree.sync(guild=guild)  # sync only to your test server
     await bot.tree.sync()
     print(f"Logged in as {bot.user}")
 
