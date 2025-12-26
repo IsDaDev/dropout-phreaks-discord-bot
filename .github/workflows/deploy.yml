@@ -14,11 +14,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '21'
-
       - name: Install cloudflared
         run: |
           CLOUDFLARED_VERSION=2025.10.0
@@ -38,4 +33,4 @@ jobs:
           rsync -av -e "ssh -o ProxyCommand=\"cloudflared access ssh --hostname ssh.isdadev.at\"" ./ deploy@ssh.isdadev.at:/opt/dropout-phreaks-discord-bot
           ssh -o StrictHostKeyChecking=no -o \
           ProxyCommand="cloudflared access ssh --hostname ssh.isdadev.at"  \
-          deploy@ssh.isdadev.at
+          deploy@ssh.isdadev.at "systemctl restart dp-bot-discord"

@@ -3,6 +3,9 @@ import time
 import embed
 from discord.ext import commands
 from os import environ
+from dotenv import load_dotenv
+
+load_dotenv()
 
 TOKEN = environ['TOKEN']
 
