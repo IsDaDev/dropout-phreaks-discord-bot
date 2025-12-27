@@ -107,6 +107,6 @@ async def blog_command(interaction: discord.Interaction):
 
 @bot.tree.command(name="phreak", description="Phreaks logo")
 async def blog_command(interaction: discord.Interaction):
-    await sendEmbed(embed.blogembed(), interaction)
+    await sendLogo(interaction)
 
 bot.run(TOKEN)
