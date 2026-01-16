@@ -223,3 +223,17 @@ def blogembed():
     )
 
     return blogembed
+
+def dontasktoaskembed():
+    dataembed = discord.Embed(
+        title="Don't Ask To Ask",
+        color=discord.Color.dark_gold()
+    )
+
+    dataembed.add_field(
+        name="Don't Ask To Ask",
+        value="[Don't ask to ask](https://dontasktoask.com/)",
+        inline=False
+    )
+
+    return dataembed
