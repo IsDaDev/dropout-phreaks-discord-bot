@@ -60,4 +60,8 @@ async def resources_command(interaction: discord.Interaction):
 async def blog_command(interaction: discord.Interaction):
     await sendEmbed(embed.blogembed(), interaction)
 
+@bot.tree.command(name="dontasktoask", description="Don't ask to ask")
+async def blog_command(interaction: discord.Interaction):
+    await sendEmbed(embed.dontasktoaskembed(), interaction)
+
 bot.run(TOKEN)
