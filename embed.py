@@ -231,7 +231,6 @@ def dontasktoaskembed():
     )
 
     dataembed.add_field(
-        name="Don't Ask To Ask",
         value="[Don't ask to ask](https://dontasktoask.com/)",
         inline=False
     )
