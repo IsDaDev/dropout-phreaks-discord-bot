@@ -232,7 +232,22 @@ def dontasktoaskembed():
 
     dataembed.add_field(
         name="",
-        value="[Don't ask to ask](https://dontasktoask.com/)",
+        value="You have been pinged since you asked to ask a question. It might be better to just ask what you want to know. " \
+        "So instead of asking \"Hey any Java expert here?\", you could ask \"I got a problem with x using Java and I would be " \
+        "glad if somebody could help me find a solution\". Also including information on what you have tried or done already can " \
+        "be really helpful.",
+        inline=False
+    )
+
+    dataembed.add_field(
+        name="Read More",
+        value="https://dontasktoask.com/",
+        inline=False
+    )
+
+    dataembed.add_field(
+        name="The art of asking better questions",
+        value="https://medium.com/@rickharrison_/the-art-of-asking-better-questions-4312b5d469e0",
         inline=False
     )
 

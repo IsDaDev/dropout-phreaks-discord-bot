@@ -2,6 +2,7 @@ import discord
 import time
 import embed
 from discord.ext import commands
+from discord import app_commands
 from os import environ
 from dotenv import load_dotenv
 
@@ -60,8 +61,28 @@ async def resources_command(interaction: discord.Interaction):
 async def blog_command(interaction: discord.Interaction):
     await sendEmbed(embed.blogembed(), interaction)
 
-@bot.tree.command(name="dontasktoask", description="Don't ask to ask")
-async def blog_command(interaction: discord.Interaction):
-    await sendEmbed(embed.dontasktoaskembed(), interaction)
+@bot.tree.command(name='dontasktoask', description='Don\'t ask to ask')
+async def dontasktoask(interaction: discord.Interaction, member: discord.Member = None):
+    if member:
+        user_id = interaction.user.id
+        now = time.time()
+
+        last_used = cooldowns.get(user_id, 0)
+        remaining = 180 - (now - last_used)
+
+        if remaining > 0:
+            await interaction.response.send_message(
+                f"⏳ Please wait {int(remaining)} seconds before using this again.",
+                ephemeral=True
+            )
+            return
+
+        cooldowns[user_id] = now
+        await interaction.response.send_message(
+            content=member.mention,
+            embed=embed.dontasktoaskembed()
+        )
+    else: 
+        await sendEmbed(embed.dontasktoaskembed(), interaction)
 
 bot.run(TOKEN)
