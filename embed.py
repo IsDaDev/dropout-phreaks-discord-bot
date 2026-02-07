@@ -151,6 +151,7 @@ def resourcesembed():
             "• [TryHackMe: Windows Fundamentals](https://tryhackme.com/module/windows-fundamentals)\n"
             "• [Sophos: What is Active Directory](https://www.sophos.com/en-us/cybersecurity-explained/active-directory-security)\n"
             "• [JustHacking: Windows Internals (Shikata)](https://learn.justhacking.com/courses/8c15538d-d3d2-4b02-b95f-958bece398c0)"
+            "• [Attacking AD by zer1t0](https://zer1t0.gitlab.io/posts/attacking_ad/#why-this-post)"
         ),
         inline=False
     )
@@ -169,17 +170,23 @@ def resourcesembed():
         name="🧩 Reverse Engineering, pwn",
         value=(
             "• [0xInfection: Reverse Engineering Guide](https://0xinfection.github.io/reversing/)\n"
+            "• [guyinatuxedo: Nighmare, RE and pwn for CTFs](https://guyinatuxedo.github.io/index.html)\n"
             "• [PicoCTF Reverse Engineering Primer](https://primer.picoctf.org/)\n"
-            "• [pwn.college](https://pwn.college/)"
+            "• [pwn.college](https://pwn.college/)\n"
+            "• [pwnable.kr](https://pwnable.kr/)\n"
+            "• [rootme](https://www.root-me.org/)\n"
+            "• [pwn-notes by sashactf](https://sashactf.gitbook.io/pwn-notes)\n"
+            "• [Reverse Engineering Fundamentals by 3ch0](https://www.notion.so/3ch0/Reverse-Engineering-Fundamentals-297d05a447d580f6bf19f1e1248473e1)"
         ),
         inline=False
     )
 
     embed.add_field(
-        name="👾 Malware Reverse Engineering",
+        name="👾 Malware",
         value=(
             "• [Awesome Malware Analysis by rshipp](https://github.com/rshipp/awesome-malware-analysis)\n"
             "• [Practical Malware Analysis (book)](https://www.kea.nu/files/textbooks/humblesec/practicalmalwareanalysis.pdf)"
+            "• [Malware Development by 0xpat](https://0xpat.github.io/Malware_development_part_1/)"
         ),
         inline=False
     )
@@ -190,7 +197,8 @@ def resourcesembed():
         value=(
             "• [Blueteam homelabs](https://github.com/aboutsecurity/blueteam_homelabs)\n"
             "• [Awesome Incident Response](https://github.com/meirwah/awesome-incident-response)\n"
-            "• [Blueteamlabs](https://blueteamlabs.online/)"
+            "• [Blueteamlabs](https://blueteamlabs.online/)\n"
+            "• [Orange Book Blackhillsec (IR)](https://www.blackhillsinfosec.com/prompt-zine/prompt-issue-infosec-survival-guide-orange-book/)"
         ),
         inline=False
     )
