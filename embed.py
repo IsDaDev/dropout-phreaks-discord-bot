@@ -186,7 +186,7 @@ def resourcesembed():
         name="👾 Malware",
         value=(
             "• [Awesome Malware Analysis by rshipp](https://github.com/rshipp/awesome-malware-analysis)\n"
-            "• [Practical Malware Analysis (book)](https://www.kea.nu/files/textbooks/humblesec/practicalmalwareanalysis.pdf)"
+            "• [Practical Malware Analysis (book)](https://www.kea.nu/files/textbooks/humblesec/practicalmalwareanalysis.pdf)\n"
             "• [Malware Development by 0xpat](https://0xpat.github.io/Malware_development_part_1/)"
         ),
         inline=False
@@ -262,3 +262,4 @@ def dontasktoaskembed():
 
 
     return dataembed
+
