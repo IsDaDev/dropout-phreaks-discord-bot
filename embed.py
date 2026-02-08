@@ -119,6 +119,7 @@ def resourcesembed():
         value=(
             "• [Hack The Box](https://www.hackthebox.eu/)\n"
             "• [TryHackMe](https://tryhackme.com/)\n"
+            "• [List of 350 free THM Rooms](https://github.com/uttambodara/TryHackMeRoadmap)\n"
             "• [PicoCTF](https://www.picoctf.org/)"
         ),
         inline=False
@@ -258,5 +259,6 @@ def dontasktoaskembed():
         value="https://medium.com/@rickharrison_/the-art-of-asking-better-questions-4312b5d469e0",
         inline=False
     )
+
 
     return dataembed
