@@ -10,7 +10,6 @@ def hdigsembed():
         ),
         color=discord.Color.blurple()
     )
-
     hdigsembed.add_field(
         name="Core foundations",
         value=(
@@ -22,7 +21,6 @@ def hdigsembed():
         ),
         inline=False
     )
-
     hdigsembed.add_field(
         name="Why this matters",
         value=(
@@ -31,7 +29,6 @@ def hdigsembed():
         ),
         inline=False
     )
-
     hdigsembed.add_field(
         name="What comes next",
         value=(
@@ -41,7 +38,6 @@ def hdigsembed():
         ),
         inline=False
     )
-
     hdigsembed.add_field(
         name="🔗 Resources",
         value=(
@@ -50,12 +46,10 @@ def hdigsembed():
         ),
         inline=False
     )
-
     hdigsembed.add_field(
         name="Happy learning!",
         value="More resources are listed in the `/resources` command."
     )
-
     return hdigsembed
 
 def igothackedembed():
@@ -72,13 +66,11 @@ def igothackedembed():
         ),
         color=discord.Color.red()
     )
-
     igothackedembed.add_field(
         name="Stay Calm",
         value="Panicking can lead to mistakes. Take a deep breath and follow the steps methodically.",
         inline=False
     )
-
     igothackedembed.add_field(
         name="Prevention Tips",
         value=(
@@ -90,11 +82,10 @@ def igothackedembed():
         ),
         inline=False
     )
-
     return igothackedembed
 
 def certificatesembed():
-    certificatesembed = discord.Embed(
+    return discord.Embed(
         title="List of Certificates sorted by Domain",
         description=(
             "[PaulJeremy Certificate Roadmap](https://pauljerimy.com/security-certification-roadmap/)"
@@ -102,18 +93,12 @@ def certificatesembed():
         color=discord.Color.green()
     )
 
-    return certificatesembed
-
-import discord
-
 def resourcesembed():
     embed = discord.Embed(
         title="List of Cybersecurity Resources",
         description="A curated list of learning platforms, networking, OS fundamentals, hacking, reverse engineering, and blue teaming resources.",
         color=discord.Color.orange()
     )
-
-    # Practice Platforms
     embed.add_field(
         name="🧪 Practice Platforms",
         value=(
@@ -124,8 +109,6 @@ def resourcesembed():
         ),
         inline=False
     )
-
-    # Networking
     embed.add_field(
         name="🌐 Networking",
         value=(
@@ -134,8 +117,6 @@ def resourcesembed():
         ),
         inline=False
     )
-
-    # Linux / CLI
     embed.add_field(
         name="🐧 Linux / CLI",
         value=(
@@ -144,8 +125,6 @@ def resourcesembed():
         ),
         inline=False
     )
-
-    # Windows / AD
     embed.add_field(
         name="🪟 Windows / Active Directory",
         value=(
@@ -156,8 +135,6 @@ def resourcesembed():
         ),
         inline=False
     )
-
-    # Web Hacking
     embed.add_field(
         name="🕸️ Web Hacking",
         value=(
@@ -165,8 +142,6 @@ def resourcesembed():
         ),
         inline=False
     )
-
-    # Reverse Engineering
     embed.add_field(
         name="🧩 Reverse Engineering, pwn",
         value=(
@@ -181,7 +156,6 @@ def resourcesembed():
         ),
         inline=False
     )
-
     embed.add_field(
         name="👾 Malware",
         value=(
@@ -191,8 +165,6 @@ def resourcesembed():
         ),
         inline=False
     )
-
-    # Blue Teaming
     embed.add_field(
         name="🛡️ Blue Team / Defensive Security",
         value=(
@@ -203,7 +175,6 @@ def resourcesembed():
         ),
         inline=False
     )
-
     embed.add_field(
         name="🔗 Additional Resources",
         value=(
@@ -213,7 +184,6 @@ def resourcesembed():
         ),
         inline=False
     )
-
     return embed
 
 def blogembed():
@@ -224,13 +194,11 @@ def blogembed():
         ),
         color=discord.Color.purple()
     )
-
     blogembed.add_field(
         name="🔗 Blog Link",
         value="[Acid.wiki Blog](https://acid.wiki/blog)",
         inline=False
     )
-
     return blogembed
 
 def dontasktoaskembed():
@@ -238,7 +206,6 @@ def dontasktoaskembed():
         title="Don't Ask To Ask",
         color=discord.Color.dark_gold()
     )
-
     dataembed.add_field(
         name="",
         value="You have been pinged since you asked to ask a question. It might be better to just ask what you want to know. " \
@@ -247,18 +214,66 @@ def dontasktoaskembed():
         "be really helpful.",
         inline=False
     )
-
     dataembed.add_field(
         name="Read More",
         value="https://dontasktoask.com/",
         inline=False
     )
-
     dataembed.add_field(
         name="The art of asking better questions",
         value="https://medium.com/@rickharrison_/the-art-of-asking-better-questions-4312b5d469e0",
         inline=False
     )
-
-
     return dataembed
+
+counter = 0
+voters = set()
+
+async def button (interaction: discord.Interaction, user, votes: int = 10, requires_regular_or_higher: bool = False):
+    global counter
+    counter = 0
+
+    view = discord.ui.View()
+    vote = discord.ui.Button(label=f"Vote to ban", style=discord.ButtonStyle.primary)
+    cancel = discord.ui.Button(label=f"Cancel vote", style=discord.ButtonStyle.danger)
+
+    async def voteButtonClick(interaction: discord.Interaction):
+        if requires_regular_or_higher:
+            userrole = interaction.user.roles
+            if not any(role.name.lower().strip() in ['regular', 'regularbutbetter', 'root', 'sudoers', 'trusted', 'legend'] for role in userrole):
+                await interaction.response.send_message("This vote is only for regular and higher!", ephemeral=True)
+                return
+
+        if interaction.user.id in voters:
+            await interaction.response.send_message("You have already voted!", ephemeral=True)
+            return
+        
+        global counter
+        counter += 1
+        voters.add(interaction.user.id)
+        await interaction.response.send_message(f"You voted to ban {user}!", ephemeral=True)
+        
+        if counter == votes:
+            await interaction.message.edit(content=f"{user} has been banned!", view=None)
+            await interaction.guild.ban(user)
+
+            counter = 0
+            voters.clear()
+
+    async def cancelVote(interaction: discord.Interaction):
+        userrole = interaction.user.roles
+        if not any(role.name in ['root', 'sudoers'] for role in userrole):
+            await interaction.response.send_message("You don't have permission to cancel this vote!", ephemeral=True)
+            return
+        
+        global counter
+        counter = 0
+        voters.clear()
+        await interaction.message.edit(content=f"The vote to ban {user} has been cancelled!", view=None)
+
+    vote.callback = voteButtonClick
+    cancel.callback = cancelVote
+    view.add_item(vote)
+    view.add_item(cancel)
+
+    await interaction.response.send_message(f"Vote to ban the user {user}!", view=view)

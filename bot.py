@@ -2,7 +2,6 @@ import discord
 import time
 import embed
 from discord.ext import commands
-from discord import app_commands
 from os import environ
 from dotenv import load_dotenv
 
@@ -84,5 +83,14 @@ async def dontasktoask(interaction: discord.Interaction, member: discord.Member 
         )
     else: 
         await sendEmbed(embed.dontasktoaskembed(), interaction)
+
+@bot.tree.command(name="voteban", description="Start a vote to ban a user")
+async def test_command(interaction: discord.Interaction, user: discord.Member, votes: int = 10, requires_regular_or_higher: bool = False):
+    roles = interaction.user.roles
+    if any(role.name in ['root', 'sudoers'] for role in roles):
+        await embed.button(interaction, user, votes, requires_regular_or_higher)
+    else: 
+        await interaction.response.send_message("You don't have permission to use this command!", ephemeral=True)
+
 
 bot.run(TOKEN)
