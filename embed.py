@@ -263,7 +263,7 @@ async def button(interaction: discord.Interaction, user, votes: int = 10, requir
 
     async def cancelVote(interaction: discord.Interaction):
         userrole = interaction.user.roles
-        if not any(role.name in [514593949503979530, 557638531871146000] for role in userrole):
+        if not any(role.id in [514593949503979530, 557638531871146000] for role in userrole):
             await interaction.response.send_message("You don't have permission to cancel this vote!", ephemeral=True)
             return
     
