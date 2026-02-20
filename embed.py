@@ -226,49 +226,47 @@ def dontasktoaskembed():
     )
     return dataembed
 
-counter = 0
-voters = set()
+class VoteState:
+    def __init__(self):
+        self.counter = 0
+        self.voters = set()
 
-async def button (interaction: discord.Interaction, user, votes: int = 10, requires_regular_or_higher: bool = False):
-    global counter
-    counter = 0
+async def button(interaction: discord.Interaction, user, votes: int = 10, requires_regular_or_higher: bool = False):
+    vote_state = VoteState()
 
     view = discord.ui.View()
-    vote = discord.ui.Button(label=f"Vote to ban", style=discord.ButtonStyle.primary)
-    cancel = discord.ui.Button(label=f"Cancel vote", style=discord.ButtonStyle.danger)
+    vote = discord.ui.Button(label="Vote to ban", style=discord.ButtonStyle.primary)
+    cancel = discord.ui.Button(label="Cancel vote", style=discord.ButtonStyle.danger)
 
     async def voteButtonClick(interaction: discord.Interaction):
         if requires_regular_or_higher:
-            userrole = interaction.user.roles
-            if not any(role.name.lower().strip() in ['regular', 'regularbutbetter', 'root', 'sudoers', 'trusted', 'legend'] for role in userrole):
+            userrole = interaction.user.roles                                         
+            if not any(role.id in ['514593949503979530', # root
+                                   '557638531871146000', # sudoers
+                                   '557639875440934932', # legend 
+                                   '1162203070978068530', # regularbutbetter and regular at the bottom
+                                   '557639177169010688'] for role in userrole):
                 await interaction.response.send_message("This vote is only for regular and higher!", ephemeral=True)
                 return
 
-        if interaction.user.id in voters:
+        if interaction.user.id in vote_state.voters:
             await interaction.response.send_message("You have already voted!", ephemeral=True)
             return
         
-        global counter
-        counter += 1
-        voters.add(interaction.user.id)
+        vote_state.counter += 1
+        vote_state.voters.add(interaction.user.id)
         await interaction.response.send_message(f"You voted to ban {user}!", ephemeral=True)
         
-        if counter == votes:
+        if vote_state.counter == votes:
             await interaction.message.edit(content=f"{user} has been banned!", view=None)
             await interaction.guild.ban(user)
-
-            counter = 0
-            voters.clear()
 
     async def cancelVote(interaction: discord.Interaction):
         userrole = interaction.user.roles
         if not any(role.name in ['root', 'sudoers'] for role in userrole):
             await interaction.response.send_message("You don't have permission to cancel this vote!", ephemeral=True)
             return
-        
-        global counter
-        counter = 0
-        voters.clear()
+    
         await interaction.message.edit(content=f"The vote to ban {user} has been cancelled!", view=None)
 
     vote.callback = voteButtonClick

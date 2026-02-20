@@ -14,7 +14,6 @@ intents.message_content = True
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
-# Simple cooldown storage for slash command
 cooldowns = {}
 COOLDOWN_SECONDS = 5
 
@@ -87,7 +86,9 @@ async def dontasktoask(interaction: discord.Interaction, member: discord.Member 
 @bot.tree.command(name="voteban", description="Start a vote to ban a user")
 async def test_command(interaction: discord.Interaction, user: discord.Member, votes: int = 10, requires_regular_or_higher: bool = False):
     roles = interaction.user.roles
-    if any(role.name in ['root', 'sudoers'] for role in roles):
+    
+                       # root                # sudoers
+    if any(role.id in ['514593949503979530', '557638531871146000'] for role in roles):
         await embed.button(interaction, user, votes, requires_regular_or_higher)
     else: 
         await interaction.response.send_message("You don't have permission to use this command!", ephemeral=True)
