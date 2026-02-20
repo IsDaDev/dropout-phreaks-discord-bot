@@ -241,11 +241,11 @@ async def button(interaction: discord.Interaction, user, votes: int = 10, requir
     async def voteButtonClick(interaction: discord.Interaction):
         if requires_regular_or_higher:
             userrole = interaction.user.roles                                         
-            if not any(role.id in ['514593949503979530', # root
-                                   '557638531871146000', # sudoers
-                                   '557639875440934932', # legend 
-                                   '1162203070978068530', # regularbutbetter and regular at the bottom
-                                   '557639177169010688'] for role in userrole):
+            if not any(role.id in [514593949503979530, # root
+                                   557638531871146000, # sudoers
+                                   557639875440934932, # legend 
+                                   1162203070978068530, # regularbutbetter and regular at the bottom
+                                   557639177169010688] for role in userrole):
                 await interaction.response.send_message("This vote is only for regular and higher!", ephemeral=True)
                 return
 
@@ -263,7 +263,7 @@ async def button(interaction: discord.Interaction, user, votes: int = 10, requir
 
     async def cancelVote(interaction: discord.Interaction):
         userrole = interaction.user.roles
-        if not any(role.name in ['root', 'sudoers'] for role in userrole):
+        if not any(role.name in [514593949503979530, 557638531871146000] for role in userrole):
             await interaction.response.send_message("You don't have permission to cancel this vote!", ephemeral=True)
             return
     
