@@ -88,7 +88,7 @@ async def test_command(interaction: discord.Interaction, user: discord.Member, v
     roles = interaction.user.roles
     
                        # root                # sudoers
-    if any(role.id in ['514593949503979530', '557638531871146000'] for role in roles):
+    if any(role.id in [514593949503979530, 557638531871146000] for role in roles):
         await embed.button(interaction, user, votes, requires_regular_or_higher)
     else: 
         await interaction.response.send_message("You don't have permission to use this command!", ephemeral=True)
