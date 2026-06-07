@@ -10,7 +10,6 @@ def hdigsembed():
         ),
         color=discord.Color.blurple()
     )
-
     hdigsembed.add_field(
         name="Core foundations",
         value=(
@@ -22,7 +21,6 @@ def hdigsembed():
         ),
         inline=False
     )
-
     hdigsembed.add_field(
         name="Why this matters",
         value=(
@@ -31,7 +29,6 @@ def hdigsembed():
         ),
         inline=False
     )
-
     hdigsembed.add_field(
         name="What comes next",
         value=(
@@ -41,7 +38,6 @@ def hdigsembed():
         ),
         inline=False
     )
-
     hdigsembed.add_field(
         name="🔗 Resources",
         value=(
@@ -50,12 +46,10 @@ def hdigsembed():
         ),
         inline=False
     )
-
     hdigsembed.add_field(
         name="Happy learning!",
         value="More resources are listed in the `/resources` command."
     )
-
     return hdigsembed
 
 def igothackedembed():
@@ -72,13 +66,11 @@ def igothackedembed():
         ),
         color=discord.Color.red()
     )
-
     igothackedembed.add_field(
         name="Stay Calm",
         value="Panicking can lead to mistakes. Take a deep breath and follow the steps methodically.",
         inline=False
     )
-
     igothackedembed.add_field(
         name="Prevention Tips",
         value=(
@@ -90,11 +82,10 @@ def igothackedembed():
         ),
         inline=False
     )
-
     return igothackedembed
 
 def certificatesembed():
-    certificatesembed = discord.Embed(
+    return discord.Embed(
         title="List of Certificates sorted by Domain",
         description=(
             "[PaulJeremy Certificate Roadmap](https://pauljerimy.com/security-certification-roadmap/)"
@@ -102,22 +93,16 @@ def certificatesembed():
         color=discord.Color.green()
     )
 
-    return certificatesembed
-
-import discord
-
 def resourcesembed():
     embed = discord.Embed(
         title="List of Cybersecurity Resources",
         description="A curated list of learning platforms, networking, OS fundamentals, hacking, reverse engineering, and blue teaming resources.",
         color=discord.Color.orange()
     )
-
-    # Practice Platforms
     embed.add_field(
         name="🧪 Practice Platforms",
         value=(
-            "• [Hack The Box](https://www.hackthebox.eu/)\n"
+            "• [HackTheBox](https://www.hackthebox.eu/)\n"
             "• [TryHackMe](https://tryhackme.com/)\n"
             "• [List of 350 free THM Rooms](https://github.com/uttambodara/TryHackMeRoadmap)\n"
             "• [PicoCTF](https://www.picoctf.org/)"
@@ -125,7 +110,18 @@ def resourcesembed():
         inline=False
     )
 
-    # Networking
+    embed.add_field(
+        name="Guides",
+        value=(
+            "• [Roadmap.sh Cybersecurity](https://roadmap.sh/cyber-security)\n"
+            "• [Getting started guide by IsDaDev](https://www.isdadev.at/posts/getting-started/)\n"
+            "• [Hacktricks Wiki](https://hacktricks.wiki/)\n"
+            "• [Red Team Notes](http://ired.team/)\n"
+            "• [HackTheBox Beginners Bible](https://www.hackthebox.com/blog/learn-to-hack-beginners-bible)"
+        ),
+        inline=False
+    )
+
     embed.add_field(
         name="🌐 Networking",
         value=(
@@ -134,8 +130,6 @@ def resourcesembed():
         ),
         inline=False
     )
-
-    # Linux / CLI
     embed.add_field(
         name="🐧 Linux / CLI",
         value=(
@@ -144,20 +138,16 @@ def resourcesembed():
         ),
         inline=False
     )
-
-    # Windows / AD
     embed.add_field(
         name="🪟 Windows / Active Directory",
         value=(
             "• [TryHackMe: Windows Fundamentals](https://tryhackme.com/module/windows-fundamentals)\n"
             "• [Sophos: What is Active Directory](https://www.sophos.com/en-us/cybersecurity-explained/active-directory-security)\n"
-            "• [JustHacking: Windows Internals (Shikata)](https://learn.justhacking.com/courses/8c15538d-d3d2-4b02-b95f-958bece398c0)"
+            "• [JustHacking: Windows Internals (Shikata)](https://learn.justhacking.com/courses/8c15538d-d3d2-4b02-b95f-958bece398c0)\n"
             "• [Attacking AD by zer1t0](https://zer1t0.gitlab.io/posts/attacking_ad/#why-this-post)"
         ),
         inline=False
     )
-
-    # Web Hacking
     embed.add_field(
         name="🕸️ Web Hacking",
         value=(
@@ -165,8 +155,6 @@ def resourcesembed():
         ),
         inline=False
     )
-
-    # Reverse Engineering
     embed.add_field(
         name="🧩 Reverse Engineering, pwn",
         value=(
@@ -181,18 +169,16 @@ def resourcesembed():
         ),
         inline=False
     )
-
     embed.add_field(
         name="👾 Malware",
         value=(
             "• [Awesome Malware Analysis by rshipp](https://github.com/rshipp/awesome-malware-analysis)\n"
-            "• [Practical Malware Analysis (book)](https://www.kea.nu/files/textbooks/humblesec/practicalmalwareanalysis.pdf)\n"
-            "• [Malware Development by 0xpat](https://0xpat.github.io/Malware_development_part_1/)"
+            "• [Practical Malware Analysis (book)](https://www.kea.nu/files/textbooks/humblesec/practicalmalwareanalysis.pdf)"
+            "• [Malware Development by 0xpat](https://0xpat.github.io/Malware_development_part_1/)\n"
+            "• [Historical Resources for Malware](http://textfiles.com/virus/)"
         ),
         inline=False
     )
-
-    # Blue Teaming
     embed.add_field(
         name="🛡️ Blue Team / Defensive Security",
         value=(
@@ -203,13 +189,14 @@ def resourcesembed():
         ),
         inline=False
     )
-
     embed.add_field(
         name="🔗 Additional Resources",
         value=(
             "• [Acid.Wiki](https://acid.wiki/)\n"
             "• [Daniel Miessler: Infosec Career Guide](https://danielmiessler.com/blog/build-successful-infosec-career/)\n"
-            "• [100 Red-Team Projects](https://github.com/kurogai/100-redteam-projects)"
+            "• [100 Red-Team Projects](https://github.com/kurogai/100-redteam-projects)\n"
+            "• [Historical Resources for Hacking](http://textfiles.com/hacking/)\n"
+            "• [Phineas Fisher hack documentations](https://theanarchistlibrary.org/category/author/phineas-fisher)"
         ),
         inline=False
     )
@@ -224,13 +211,11 @@ def blogembed():
         ),
         color=discord.Color.purple()
     )
-
     blogembed.add_field(
         name="🔗 Blog Link",
         value="[Acid.wiki Blog](https://acid.wiki/blog)",
         inline=False
     )
-
     return blogembed
 
 def dontasktoaskembed():
@@ -238,7 +223,6 @@ def dontasktoaskembed():
         title="Don't Ask To Ask",
         color=discord.Color.dark_gold()
     )
-
     dataembed.add_field(
         name="",
         value="You have been pinged since you asked to ask a question. It might be better to just ask what you want to know. " \
@@ -247,19 +231,64 @@ def dontasktoaskembed():
         "be really helpful.",
         inline=False
     )
-
     dataembed.add_field(
         name="Read More",
         value="https://dontasktoask.com/",
         inline=False
     )
-
     dataembed.add_field(
         name="The art of asking better questions",
         value="https://medium.com/@rickharrison_/the-art-of-asking-better-questions-4312b5d469e0",
         inline=False
     )
-
-
     return dataembed
 
+# class VoteState:
+#     def __init__(self):
+#         self.counter = 0
+#         self.voters = set()
+
+# async def button(interaction: discord.Interaction, user, votes: int = 10, requires_regular_or_higher: bool = False):
+#     vote_state = VoteState()
+
+#     view = discord.ui.View()
+#     vote = discord.ui.Button(label="Vote to ban", style=discord.ButtonStyle.primary)
+#     cancel = discord.ui.Button(label="Cancel vote", style=discord.ButtonStyle.danger)
+
+#     async def voteButtonClick(interaction: discord.Interaction):
+#         if requires_regular_or_higher:
+#             userrole = interaction.user.roles                                         
+#             if not any(role.id in [514593949503979530, # root
+#                                    557638531871146000, # sudoers
+#                                    557639875440934932, # legend 
+#                                    1162203070978068530, # regularbutbetter and regular at the bottom
+#                                    557639177169010688] for role in userrole):
+#                 await interaction.response.send_message("This vote is only for regular and higher!", ephemeral=True)
+#                 return
+
+#         if interaction.user.id in vote_state.voters:
+#             await interaction.response.send_message("You have already voted!", ephemeral=True)
+#             return
+        
+#         vote_state.counter += 1
+#         vote_state.voters.add(interaction.user.id)
+#         await interaction.response.send_message(f"You voted to ban {user}!", ephemeral=True)
+        
+#         if vote_state.counter == votes:
+#             await interaction.message.edit(content=f"{user} has been banned!", view=None)
+#             await interaction.guild.ban(user)
+
+#     async def cancelVote(interaction: discord.Interaction):
+#         userrole = interaction.user.roles
+#         if not any(role.id in [514593949503979530, 557638531871146000] for role in userrole):
+#             await interaction.response.send_message("You don't have permission to cancel this vote!", ephemeral=True)
+#             return
+    
+#         await interaction.message.edit(content=f"The vote to ban {user} has been cancelled!", view=None)
+
+#     vote.callback = voteButtonClick
+#     cancel.callback = cancelVote
+#     view.add_item(vote)
+#     view.add_item(cancel)
+
+#     await interaction.response.send_message(f"Vote to ban the user {user}!", view=view)
