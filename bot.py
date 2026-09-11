@@ -10,12 +10,8 @@ load_dotenv()
 
 TOKEN = environ['TOKEN']
 
-intents = discord.Intents.default()
-intents.message_content = True
+bot = commands.Bot(command_prefix="!", intents=discord.Intents.none())
 
-bot = commands.Bot(command_prefix="!", intents=intents)
-
-# Simple cooldown storage for slash command
 cooldowns = {}
 COOLDOWN_SECONDS = 5
 
