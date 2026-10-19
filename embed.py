@@ -41,7 +41,7 @@ def hdigsembed():
     hdigsembed.add_field(
         name="🔗 Resources",
         value=(
-            "[Getting Started Guide isdadev.at](https://www.isdadev.at/posts/getting-started/)\n"
+            "[Getting Started Guide isdadev.at](https://www.isdadev.at/blog/getting-started/)\n"
             "[Longer version of this post](https://discord.com/channels/326839256758616068/1397957109064405053)"
         ),
         inline=False
